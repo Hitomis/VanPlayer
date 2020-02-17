@@ -12,7 +12,7 @@ void VanVideoView::render(XData &data) {
     if (!view) return;
     if (!texture) {
         texture = XTexture::create();
-        texture->init(view);
+        texture->init(view, static_cast<XTextureType>(data.format));
     }
     texture->draw(data.datas, data.width, data.height);
 }

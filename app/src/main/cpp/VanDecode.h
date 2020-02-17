@@ -12,7 +12,9 @@ struct AVCodecContext;
 
 class VanDecode : public IDecode {
 public:
-    bool open(XParameter param) override;
+    static void registerHard(void *vm);
+
+    bool open(XParameter param, bool isHard = false) override;
 
     bool sendPacket(XData &packet) override;
 

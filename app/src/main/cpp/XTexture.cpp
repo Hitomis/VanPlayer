@@ -10,21 +10,27 @@
 class CXTexture : public XTexture {
 public:
     XShader shader;
+    XTextureType type;
 
-    bool init(void *win) override {
+    bool init(void *win, XTextureType type) override {
+        this->type = type;
         if (!win) {
             XLOGE("XTexture init failed win is null");
             return false;
         }
         if (!XEGL::getInstance()->init(win)) return false;
-        shader.init();
+        shader.init(static_cast<XShaderType>(type));
         return true;
     }
 
     void draw(unsigned char *data[], int width, int height) override {
         shader.getTexture(0, width, height, data[0]); // Y
-        shader.getTexture(1, width / 2, height / 2, data[1]); // U
-        shader.getTexture(2, width / 2, height / 2, data[2]); // V
+        if (type == XTEXTURE_YUV420P) {
+            shader.getTexture(1, width / 2, height / 2, data[1]); // U
+            shader.getTexture(2, width / 2, height / 2, data[2]); // V
+        } else {
+            shader.getTexture(1, width / 2, height / 2, data[1], true); // UV
+        }
         shader.draw();
         XEGL::getInstance()->draw();
     }

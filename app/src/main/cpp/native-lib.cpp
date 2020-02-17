@@ -635,7 +635,7 @@ Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring
 
     // 打开视频解码器解码视频数据
     auto *vDecode = new VanDecode();
-    vDecode->open(demux->getVideoPar());
+    vDecode->open(demux->getVideoPar(), true);
 
     // 打开音频解码器解码音频数据
     auto *aDecode = new VanDecode();
@@ -657,4 +657,10 @@ Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring
     vDecode->start();
     aDecode->start();
 
+}
+
+extern "C" JNIEXPORT
+jint JNI_OnLoad(JavaVM *vm, void *res) {
+    VanDecode::registerHard(vm);
+    return JNI_VERSION_1_4;
 }

@@ -17,6 +17,7 @@ struct XData {
     int size = 0; // 音视频的一帧数据大小
     int width = 0; // 视频帧宽度
     int height = 0; // 视频帧高度
+    int format = 0; // 数据格式
     bool isAudio = false; // 是否是音频流
     
     bool alloc(int size, const char *data = 0);

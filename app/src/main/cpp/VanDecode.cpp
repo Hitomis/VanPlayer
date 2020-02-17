@@ -7,18 +7,28 @@
 
 extern "C" {
 #include <libavcodec/avcodec.h>
+#include <libavcodec/jni.h>
 }
 
-bool VanDecode::open(XParameter param) {
+void VanDecode::registerHard(void *vm) {
+    av_jni_set_java_vm(vm, 0);
+}
+
+bool VanDecode::open(XParameter param, bool isHard) {
     if (!param.codecParams) return false;
     AVCodecParameters *codecParams = param.codecParams;
     // 1. 查找解码器
-    AVCodec *codec = avcodec_find_decoder(codecParams->codec_id);
+    AVCodec *codec;
+    if (isHard) { // 硬解码器
+        codec = avcodec_find_decoder_by_name("h264_mediacodec");
+    } else { // 软解码器
+        codec = avcodec_find_decoder(codecParams->codec_id);
+    }
     if (!codec) {
         XLOGE("avcodec_find_decoder %d failed!", codecParams->codec_id);
         return false;
     }
-    XLOGE("avcodec_find_decoder success");
+    XLOGE("avcodec_find_decoder success %d", isHard);
     // 2 创建上下文，复制参数
     this->codecCxt = avcodec_alloc_context3(codec);
     avcodec_parameters_to_context(this->codecCxt, codecParams);
@@ -39,11 +49,8 @@ bool VanDecode::sendPacket(XData &packet) {
         return false;
     }
     int re = avcodec_send_packet(codecCxt, (AVPacket *) packet.data);
-    if (re != 0) {
-        return false;
-    }
+    return re == 0;
 
-    return true;
 }
 
 XData &VanDecode::receiveFrame() {
@@ -66,6 +73,9 @@ XData &VanDecode::receiveFrame() {
         //样本字节数 * 单通道样本数 * 通道数
         data.size = av_get_bytes_per_sample((AVSampleFormat) frame->format) * frame->nb_samples * 2;
     }
+    data.format = frame->format;
+//    if (!isAudio) XLOGE("Data format is %d", data.format);
     memcpy(data.datas, frame->data, sizeof(data.datas));
     return data;
 }
+

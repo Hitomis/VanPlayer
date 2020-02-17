@@ -15,7 +15,7 @@ struct AVFrame;
 class IDecode : public IObserver {
 public:
     // 打开解码器
-    virtual bool open(XParameter param) = 0;
+    virtual bool open(XParameter param, bool isHard = false) = 0;
 
     // 发送数据到线程解码
     virtual bool sendPacket(XData &packet) = 0;
