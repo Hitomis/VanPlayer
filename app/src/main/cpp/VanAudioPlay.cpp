@@ -117,6 +117,7 @@ void VanAudioPlay::playCall(void *bufQueue) {
         return;
     }
 
+    // 构造方法中对 buffer 进行了初始化
     if (!buffer) return;
     memcpy(buffer, data.data, data.size);
     mux.lock();

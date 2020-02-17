@@ -26,6 +26,7 @@ public:
     // 缓冲满后阻塞
     void update(XData &data) override;
 
+    // 是否是音频解码器
     bool isAudio = false;
 
     // 最大的队列数量

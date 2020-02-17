@@ -633,9 +633,11 @@ Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring
     auto *demux = new VanDemux();
     demux->open(urlStr);
 
+    // 打开视频解码器解码视频数据
     auto *vDecode = new VanDecode();
     vDecode->open(demux->getVideoPar());
 
+    // 打开音频解码器解码音频数据
     auto *aDecode = new VanDecode();
     aDecode->open(demux->getAudioPar());
 

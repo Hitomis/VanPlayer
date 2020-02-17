@@ -7,7 +7,7 @@
 
 // 生产者
 void IDecode::update(XData &data) {
-    // 只处理音频缓冲
+    // 如果解码器类型和数据类型不一致，则不处理[音频解码器只处理音频数据，视频解码器只处理视频数据]
     if (data.isAudio != isAudio) return;
 
     while (!isExit) {

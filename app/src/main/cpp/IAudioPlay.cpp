@@ -37,6 +37,7 @@ XData &IAudioPlay::getFrame() {
         framesMutex.lock();
 
         if (!frames.empty()) {
+            // 取出队列中头部的数据
             data = frames.front();
             frames.pop_front();
             framesMutex.unlock();
@@ -45,7 +46,6 @@ XData &IAudioPlay::getFrame() {
 
         framesMutex.unlock();
         XSleep(1);
-
     }
     isRunning = false;
     return data;
