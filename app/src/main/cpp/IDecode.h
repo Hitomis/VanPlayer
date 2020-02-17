@@ -23,6 +23,7 @@ public:
     // 从线程中获取解码结果，再次调用会复用上次空间，线程不安全
     virtual XData &receiveFrame() = 0;
 
+    // 缓冲满后阻塞
     void update(XData &data) override;
 
     bool isAudio = false;

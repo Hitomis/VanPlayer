@@ -15,9 +15,9 @@ bool VanResample::open(XParameter inPar, XParameter outPar) {
     actx = swr_alloc();
     //  重采样上下文的参数设置
     actx = swr_alloc_set_opts(actx,
-                              av_get_default_channel_layout(2),
+                              av_get_default_channel_layout(outPar.channels),
                               AV_SAMPLE_FMT_S16,
-                              inPar.codecParams->sample_rate,
+                              outPar.sampleRate,
                               inPar.codecParams->channel_layout,
                               (AVSampleFormat) inPar.codecParams->format,
                               inPar.codecParams->sample_rate,
@@ -53,6 +53,6 @@ XData &VanResample::resample(XData &data) {
         outData.drop();
         return outData;
     }
-    XLOGE("swr_convert success = %d", len);
+//    XLOGE("swr_convert success = %d", len);
     return outData;
 }

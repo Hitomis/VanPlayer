@@ -15,6 +15,7 @@
 #include "XShader.h"
 #include "VanVideoView.h"
 #include "VanResample.h"
+#include "VanAudioPlay.h"
 
 extern "C" {
 #include <libavutil/log.h>
@@ -639,7 +640,11 @@ Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring
     aDecode->open(demux->getAudioPar());
 
     auto *resample = new VanResample();
-    resample->open(demux->getAudioPar());
+    resample->open(demux->getAudioPar(), demux->getAudioPar());
+
+    auto *audioPlay = new VanAudioPlay();
+    resample->addObserver(audioPlay);
+    audioPlay->startPlay(demux->getAudioPar());
 
     demux->addObserver(vDecode);
     demux->addObserver(aDecode);

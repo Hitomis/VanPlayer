@@ -101,6 +101,16 @@
           "workingDirectoryOrdinal": 0
         },
         {
+          "src": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IAudioPlay.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
+          "src": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanAudioPlay.cpp",
+          "flagsOrdinal": 1,
+          "workingDirectoryOrdinal": 0
+        },
+        {
           "src": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/native-lib.cpp",
           "flagsOrdinal": 1,
           "workingDirectoryOrdinal": 0

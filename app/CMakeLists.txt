@@ -40,6 +40,8 @@ add_library(
         src/main/cpp/XEGL.cpp
         src/main/cpp/IResample.cpp
         src/main/cpp/VanResample.cpp
+        src/main/cpp/IAudioPlay.cpp
+        src/main/cpp/VanAudioPlay.cpp
         src/main/cpp/native-lib.cpp)
 
 find_library(log-lib log)

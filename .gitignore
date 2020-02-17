@@ -9,6 +9,9 @@
 # Java class files
 *.class
 
+# C / C++
+app/.cxx/*
+
 # Generated files
 bin/
 gen/

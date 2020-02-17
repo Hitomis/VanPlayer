@@ -55,6 +55,8 @@ XParameter &VanDemux::getAudioPar() {
     }
     audioStreamIndex = re;
     parameter.codecParams = fmtCtx->streams[re]->codecpar;
+    parameter.channels = parameter.codecParams->channels;
+    parameter.sampleRate = parameter.codecParams->sample_rate;
     return parameter;
 }
 

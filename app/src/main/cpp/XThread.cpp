@@ -38,3 +38,19 @@ void XThread::threadMain() {
     XLOGE("线程执行完毕");
     isRunning = false;
 }
+
+bool XThread::isPause() {
+    isPausing = isPaused;
+    return isPausing;
+}
+
+void XThread::pause(bool flag) {
+    isPaused = flag;
+    //等待100毫秒
+    for (int i = 0; i < 10; i++) {
+        if (isPausing == flag) {
+            break;
+        }
+        XSleep(10);
+    }
+}

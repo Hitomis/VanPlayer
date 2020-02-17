@@ -25,6 +25,14 @@
   },
   {
     "level": "INFO",
+    "message": "- a dependent build file changed"
+  },
+  {
+    "level": "INFO",
+    "message": "  - /Users/zhaofan/AndroidProjects/VanPlayer/app/CMakeLists.txt"
+  },
+  {
+    "level": "INFO",
     "message": "removing stale contents from \u0027/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a\u0027"
   },
   {
