@@ -10,7 +10,7 @@
 *.class
 
 # C / C++
-app/.cxx/*
+app/.cxx/
 
 # Generated files
 bin/
