@@ -1,0 +1,19 @@
+{
+  "buildFiles": [
+    "/Users/zhaofan/Library/Android/sdk/ndk-bundle/build/cmake/platforms.cmake",
+    "/Users/zhaofan/Library/Android/sdk/ndk-bundle/build/cmake/android.toolchain.cmake",
+    "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/CMakeLists.txt"
+  ],
+  "cleanCommands": [
+    "/Users/zhaofan/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/x86_64\" clean"
+  ],
+  "buildTargetsCommand": "/Users/zhaofan/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/x86_64\" {LIST_OF_TARGETS_TO_BUILD}",
+  "libraries": {
+    "native-lib-Release-x86_64": {
+      "artifactName": "native-lib",
+      "buildCommand": "/Users/zhaofan/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja -C \"/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/x86_64\" native-lib",
+      "abi": "x86_64",
+      "output": "/Users/zhaofan/AndroidProjects/VanPlayer/app/build/intermediates/cmake/release/obj/x86_64/libnative-lib.so"
+    }
+  }
+}

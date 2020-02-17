@@ -1,0 +1,103 @@
+[
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XLog.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XLog.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XLog.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/IDemux.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IDemux.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IDemux.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/VanDemux.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanDemux.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanDemux.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XData.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XData.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XData.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XParameter.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XParameter.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XParameter.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XThread.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XThread.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XThread.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/IObserver.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IObserver.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IObserver.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/IDecode.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IDecode.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IDecode.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/VanDecode.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanDecode.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanDecode.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/IVideoView.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IVideoView.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IVideoView.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/VanVideoView.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanVideoView.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanVideoView.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XTexture.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XTexture.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XTexture.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XShader.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XShader.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XShader.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/XEGL.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XEGL.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/XEGL.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/IResample.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IResample.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/IResample.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/VanResample.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanResample.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/VanResample.cpp"
+},
+
+{
+  "directory": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/armeabi-v7a",
+  "command": "/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/bin/clang++ --target=armv7-none-linux-androideabi21 --gcc-toolchain=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64 --sysroot=/Users/zhaofan/Library/Android/sdk/ndk-bundle/toolchains/llvm/prebuilt/darwin-x86_64/sysroot  -Dnative_lib_EXPORTS -I../../../../src/main/cpp/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -Wa,--noexecstack -Wformat -Werror=format-security  -std=c++11 -Oz -DNDEBUG  -fPIC   -o CMakeFiles/native-lib.dir/src/main/cpp/native-lib.cpp.o -c /Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/native-lib.cpp",
+  "file": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/native-lib.cpp"
+}
+]

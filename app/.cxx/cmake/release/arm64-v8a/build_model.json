@@ -1,0 +1,70 @@
+{
+  "variant": {
+    "module": {
+      "rootBuildGradleFolder": "/Users/zhaofan/AndroidProjects/VanPlayer",
+      "sdkFolder": "/Users/zhaofan/Library/Android/sdk",
+      "isNativeCompilerSettingsCacheEnabled": false,
+      "isBuildOnlyTargetAbiEnabled": true,
+      "splitsAbiFilterSet": [],
+      "intermediatesFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/build/intermediates",
+      "gradleModulePathName": ":app",
+      "moduleRootFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app",
+      "makeFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/src/main/cpp/CMakeLists.txt",
+      "buildSystem": "CMAKE",
+      "compilerSettingsCacheFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/.cxx",
+      "cxxFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx",
+      "ndkFolder": "/Users/zhaofan/Library/Android/sdk/ndk-bundle",
+      "ndkVersion": "20.1.5948944",
+      "ndkSupportedAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "ndkDefaultAbiList": [
+        "ARMEABI_V7A",
+        "ARM64_V8A",
+        "X86",
+        "X86_64"
+      ],
+      "cmakeToolchainFile": "."
+    },
+    "buildSystemArgumentList": [],
+    "cFlagList": [],
+    "cppFlagsList": [
+      ""
+    ],
+    "variantName": "release",
+    "soFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/build/intermediates/cmake/release/lib",
+    "objFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/build/intermediates/cmake/release/obj",
+    "jsonFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release",
+    "gradleBuildOutputFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release",
+    "isDebuggableEnabled": false,
+    "validAbiList": [
+      "ARMEABI_V7A",
+      "ARM64_V8A"
+    ],
+    "buildTargetSet": []
+  },
+  "abi": "ARM64_V8A",
+  "abiPlatformVersion": 21,
+  "cxxBuildFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a",
+  "jsonFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/android_gradle_build.json",
+  "gradleBuildOutputFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a",
+  "objFolder": "/Users/zhaofan/AndroidProjects/VanPlayer/app/build/intermediates/cmake/release/obj/arm64-v8a",
+  "buildCommandFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/build_command.txt",
+  "buildOutputFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/build_output.txt",
+  "modelOutputFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/build_model.json",
+  "cmake": {
+    "cmakeListsWrapperFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/CMakeLists.txt",
+    "toolchainWrapperFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/android_gradle_build.toolchain.cmake",
+    "buildGenerationStateFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/build_generation_state.json",
+    "cacheKeyFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/compiler_cache_key.json",
+    "compilerCacheUseFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/compiler_cache_use.json",
+    "compilerCacheWriteFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/compiler_cache_write.json",
+    "toolchainSettingsFromCacheFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cxx/release/arm64-v8a/compiler_settings_cache.cmake",
+    "cmakeWrappingBaseFolder": "."
+  },
+  "jsonGenerationLoggingRecordFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/json_generation_record.json",
+  "compileCommandsJsonFile": "/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/release/arm64-v8a/compile_commands.json"
+}

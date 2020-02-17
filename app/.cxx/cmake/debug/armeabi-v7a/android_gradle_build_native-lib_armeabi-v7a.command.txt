@@ -1,0 +1,7 @@
+Executable : /Users/zhaofan/Library/Android/sdk/cmake/3.10.2.4988404/bin/ninja
+arguments : 
+-C
+/Users/zhaofan/AndroidProjects/VanPlayer/app/.cxx/cmake/debug/armeabi-v7a
+native-lib
+jvmArgs : 
+
