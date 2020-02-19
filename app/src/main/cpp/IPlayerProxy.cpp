@@ -46,3 +46,11 @@ void IPlayerProxy::initWindow(void *win) {
     mux.unlock();
 
 }
+
+void IPlayerProxy::close() {
+    mux.lock();
+    if (player) {
+        player->close();
+    }
+    mux.unlock();
+}

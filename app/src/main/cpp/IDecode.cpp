@@ -63,3 +63,15 @@ void IDecode::run() {
         packsMutex.unlock();
     }
 }
+
+void IDecode::clear() {
+    packsMutex.lock();
+    while(!packs.empty())
+    {
+        packs.front().drop();
+        packs.pop_front();
+    }
+    pts = 0;
+    synPts = 0;
+    packsMutex.unlock();
+}

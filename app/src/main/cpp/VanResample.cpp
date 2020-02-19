@@ -11,6 +11,8 @@ extern "C" {
 }
 
 bool VanResample::open(XParameter inPar, XParameter outPar) {
+    close();
+    mux.lock();
     // 初始化音频重采样上下文
     actx = swr_alloc();
     //  重采样上下文的参数设置
@@ -25,23 +27,31 @@ bool VanResample::open(XParameter inPar, XParameter outPar) {
     int rect = swr_init(actx);
     if (rect != 0) {
         XLOGE("swr_init failed");
+        mux.unlock();
         return false;
     }
     outChannels = inPar.codecParams->channels;
     outFormat = AV_SAMPLE_FMT_S16;
+    mux.unlock();
     return true;
 }
 
 XData VanResample::resample(XData &data) {
-//    XLOGE("resample data size is %d", data.size);
+    mux.lock();
     XData outData;
-    if (!actx || data.size <= 0 || !data.data) return outData;
+    if (!actx || data.size <= 0 || !data.data) {
+        mux.unlock();
+        return outData;
+    }
     // 输出空间的分配
     auto *frame = reinterpret_cast<AVFrame *>(data.data);
     // 通道数 * 单通道样本数 * 样本字节大小
     int size = outChannels * frame->nb_samples * av_get_bytes_per_sample(
             static_cast<AVSampleFormat>(outFormat));
-    if (size <= 0) return outData;
+    if (size <= 0) {
+        mux.unlock();
+        return outData;
+    }
     outData.alloc(size);
 
     uint8_t *outArray[2] = {nullptr};
@@ -51,8 +61,18 @@ XData VanResample::resample(XData &data) {
                           frame->nb_samples);
     if (len <= 0) {
         outData.drop();
+        mux.unlock();
         return outData;
     }
     outData.pts = data.pts;
+    mux.unlock();
     return outData;
+}
+
+void VanResample::close() {
+    mux.lock();
+    if (actx) {
+        swr_free(&actx);
+    }
+    mux.unlock();
 }

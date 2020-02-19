@@ -19,6 +19,10 @@ public:
 
     virtual bool startPlay(XParameter outPar) = 0;
 
+    virtual void close() = 0;
+
+    virtual void clear();
+
     // 最大的队列数量
     int maxSize = 100;
     int pts = 0;

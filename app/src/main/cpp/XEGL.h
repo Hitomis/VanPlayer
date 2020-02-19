@@ -10,6 +10,7 @@ class XEGL {
 public:
     static XEGL *getInstance();
     virtual bool init(void *nativeWin) = 0;
+    virtual void close() = 0;
     virtual void draw() = 0;
 
 protected:

@@ -8,12 +8,16 @@
 
 #include "IAudioPlay.h"
 
-class VanAudioPlay : public IAudioPlay{
+class VanAudioPlay : public IAudioPlay {
 public:
     virtual bool startPlay(XParameter outPar);
+
+    void close() override;
+
     void playCall(void *bufQueue);
 
     VanAudioPlay();
+
     virtual ~VanAudioPlay();
 
 protected:

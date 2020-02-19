@@ -16,6 +16,8 @@ public:
     // 打开文件，或者流媒体 rmtp，http, rtsp
     virtual bool open(const char *url) = 0;
 
+    virtual void close() = 0;
+
     // 获取视频参数
     virtual XParameter getVideoPar() = 0;
 

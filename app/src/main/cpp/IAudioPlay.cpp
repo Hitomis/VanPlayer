@@ -8,7 +8,6 @@
 // 生产者
 void IAudioPlay::update(XData &data) {
     if (data.size <= 0 || !data.data) return;
-//    XLOGE("IAudioPlay::update %d", data.size);
     // 压入缓冲队列
     while (!isExit) {
         framesMutex.lock();
@@ -50,4 +49,15 @@ XData IAudioPlay::getFrame() {
     }
     isRunning = false;
     return data;
+}
+
+void IAudioPlay::clear() {
+    framesMutex.lock();
+    while(!frames.empty())
+    {
+        frames.front().drop();
+        frames.pop_front();
+    }
+    framesMutex.unlock();
+
 }

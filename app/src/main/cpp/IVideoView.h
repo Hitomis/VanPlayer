@@ -15,6 +15,8 @@ public:
 
     virtual void render(XData &data) = 0;
 
+    virtual void close() = 0;
+
     void update(XData &data) override;
 };
 

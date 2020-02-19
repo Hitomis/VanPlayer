@@ -16,3 +16,14 @@ void VanVideoView::render(XData &data) {
     }
     texture->draw(data.datas, data.width, data.height);
 }
+
+void VanVideoView::close() {
+    mux.lock();
+    if (texture) {
+
+        texture->drop();
+        texture = nullptr;
+    }
+    mux.unlock();
+
+}

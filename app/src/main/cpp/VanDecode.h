@@ -7,6 +7,7 @@
 
 #include "XParameter.h"
 #include "IDecode.h"
+#include <mutex>
 
 struct AVCodecContext;
 
@@ -16,6 +17,8 @@ public:
 
     bool open(XParameter param, bool isHard = false) override;
 
+    void close() override;
+
     bool sendPacket(XData &packet) override;
 
     // 从线程中获取解码结果，再次调用会复用上次空间，线程不安全
@@ -24,6 +27,7 @@ public:
 protected:
     AVCodecContext *codecCxt = 0;
     AVFrame *frame = 0;
+    std::mutex mux;
 };
 
 

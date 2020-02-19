@@ -16,6 +16,7 @@ IPlayer *IPlayer::getInstance(unsigned int index) {
 }
 
 bool IPlayer::open(const char *path) {
+    close();
     mux.lock();
     if (!demux || !demux->open(path)) {
         mux.unlock();
@@ -40,14 +41,14 @@ bool IPlayer::open(const char *path) {
 
 bool IPlayer::start() {
     mux.lock();
+    if (videoDecode) videoDecode->start(); // 解码并下发视频流数据
+    if (audioPlay) audioPlay->startPlay(outPar); // 开始播放音频
+    if (audioDecode) audioDecode->start(); // 解码并下发音频流数据
     if (!demux || !demux->start()) {
         mux.unlock();
         XLOGE("VanPlayer::Demux start failed");
         return false;
     }
-    if (videoDecode) videoDecode->start(); // 解码并下发视频流数据
-    if (audioDecode) audioDecode->start(); // 解码并下发音频流数据
-    if (audioPlay) audioPlay->startPlay(outPar); // 开始播放音频
     XThread::start();
     mux.unlock();
     return true;
@@ -78,4 +79,42 @@ void IPlayer::initWindow(void *win) {
     if (videoView) {
         videoView->setRender(win);
     }
+}
+
+void IPlayer::close() {
+    mux.lock();
+
+    // 1.先关闭线程执行
+    XThread::stop();
+    // 解封装 - 音视频解码器
+    if (demux)
+        demux->stop();
+    if (videoDecode)
+        videoDecode->stop();
+    if (audioDecode)
+        audioDecode->stop();
+    if (audioPlay)
+        audioPlay->stop();
+
+    // 2.清理缓冲队列
+    if (videoDecode)
+        videoDecode->clear();
+    if (audioDecode)
+        audioDecode->clear();
+    if (audioPlay)
+        audioPlay->clear();
+
+    // 3.清理资源
+    if (audioPlay)
+        audioPlay->close();
+    if (videoView)
+        videoView->close();
+    if (videoDecode)
+        videoDecode->close();
+    if (audioDecode)
+        audioDecode->close();
+    if (demux)
+        demux->close();
+
+    mux.unlock();
 }

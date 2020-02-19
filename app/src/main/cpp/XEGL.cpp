@@ -4,6 +4,7 @@
 
 #include <android/native_window.h>
 #include <EGL/egl.h>
+#include <mutex>
 #include "XEGL.h"
 #include "XLog.h"
 
@@ -12,18 +13,23 @@ public:
     EGLDisplay eglDisplay = EGL_NO_DISPLAY;
     EGLSurface eglSurface = EGL_NO_SURFACE;
     EGLContext eglContext = EGL_NO_CONTEXT;
+    std::mutex mux;
 
     bool init(void *nativeWin) override {
+        close();
+        mux.lock();
         // 获取原始窗口
-        ANativeWindow *win = static_cast<ANativeWindow *>(nativeWin);
+        auto *win = static_cast<ANativeWindow *>(nativeWin);
         // 1.获取EGLDisplay对象 显示设备
         eglDisplay = eglGetDisplay(EGL_DEFAULT_DISPLAY);
         if (eglDisplay == EGL_NO_DISPLAY) {
             XLOGE("eglGetDisplay failed");
+            mux.unlock();
             return false;
         }
         if (EGL_TRUE != eglInitialize(eglDisplay, nullptr, nullptr)) {
             XLOGE("eglInitialize failed");
+            mux.unlock();
             return false;
         }
         // 2.获取配置并创建surface
@@ -37,11 +43,13 @@ public:
         };
         if (EGL_TRUE != eglChooseConfig(eglDisplay, configSpec, &config, 1, &configNum)) {
             XLOGE("eglChooseConfig failed");
+            mux.unlock();
             return false;
         }
         eglSurface = eglCreateWindowSurface(eglDisplay, config, win, nullptr);
         if (EGL_NO_SURFACE == eglSurface) {
             XLOGE("eglCreateWindowSurface failed");
+            mux.unlock();
             return false;
         }
         // 3.创建并打开EGL上下文
@@ -51,17 +59,45 @@ public:
         eglContext = eglCreateContext(eglDisplay, config, EGL_NO_SURFACE, ctxAttr);
         if (EGL_NO_CONTEXT == eglContext) {
             XLOGE("eglCreateContext failed");
+            mux.unlock();
             return false;
         }
         if (EGL_TRUE == eglMakeCurrent(eglDisplay, eglSurface, eglSurface, eglContext)) {
             XLOGE("eglMakeCurrent success");
         }
+        mux.unlock();
         return true;
     }
 
     void draw() override {
-        if (eglDisplay == EGL_NO_DISPLAY || eglSurface == EGL_NO_SURFACE) return;
+        mux.lock();
+        if (eglDisplay == EGL_NO_DISPLAY || eglSurface == EGL_NO_SURFACE) {
+            mux.unlock();
+            return;
+        }
         eglSwapBuffers(eglDisplay, eglSurface);
+        mux.unlock();
+    }
+
+    void close() override {
+        mux.lock();
+        if (eglDisplay != EGL_NO_DISPLAY) {
+            mux.unlock();
+            return;
+        }
+        eglMakeCurrent(eglDisplay, EGL_NO_SURFACE, EGL_NO_SURFACE, EGL_NO_CONTEXT);
+        if (eglSurface != EGL_NO_SURFACE) {
+            eglDestroySurface(eglDisplay, eglSurface);
+        }
+        if (eglContext != EGL_NO_CONTEXT) {
+            eglDestroyContext(eglDisplay, eglContext);
+        }
+
+        eglTerminate(eglDisplay);
+        eglDisplay = EGL_NO_DISPLAY;
+        eglSurface = EGL_NO_SURFACE;
+        eglContext = EGL_NO_CONTEXT;
+        mux.unlock();
     }
 };
 

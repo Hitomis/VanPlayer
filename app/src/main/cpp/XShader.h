@@ -2,6 +2,8 @@
 // Created by 赵帆 on 2020-02-15.
 //
 
+#include <mutex>
+
 #ifndef VANPLAYER_XSHADER_H
 #define VANPLAYER_XSHADER_H
 
@@ -16,6 +18,8 @@ class XShader {
 public:
     virtual bool init(XShaderType type = XSHADER_YUV420P);
 
+    virtual void close();
+
     // 获取材质并映射到内存
     virtual void getTexture(unsigned int index, int width, int height, unsigned char *buffer,
                             bool isAlpha = false);
@@ -27,6 +31,7 @@ protected:
     unsigned int fsh = 0;
     unsigned int program = 0;
     unsigned int textures[3] = {0};
+    std::mutex mux;
 };
 
 

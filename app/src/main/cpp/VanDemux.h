@@ -3,6 +3,7 @@
 //
 
 #import "IDemux.h"
+#include <mutex>
 
 #ifndef VANPLAYER_VANDEMUX_H
 #define VANPLAYER_VANDEMUX_H
@@ -12,6 +13,8 @@ struct AVFormatContext;
 class VanDemux : public IDemux {
 public:
     bool open(const char *url) override;
+
+    void close() override;
 
     XData read() override;
 
@@ -26,6 +29,7 @@ public:
 
 private:
     AVFormatContext *fmtCtx = 0;
+    std::mutex mux;
     int videoStreamIndex = 0;
     int audioStreamIndex = 0;
 };

@@ -23,6 +23,7 @@ class IPlayer : public XThread {
 public:
     static IPlayer *getInstance(unsigned int index = 0);
     virtual bool open(const char *path);
+    virtual void close();
     virtual void initWindow(void *win);
 
     bool start() override;

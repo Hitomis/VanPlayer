@@ -21,7 +21,7 @@ class VanPlayer : GLSurfaceView, SurfaceHolder.Callback, GLSurfaceView.Renderer 
     override fun surfaceCreated(holder: SurfaceHolder?) {
         GlobalScope.launch {
             holder?.let {
-                NativePlayer.getInstance().vanPlay("/sdcard/jj.mp4", it.surface)
+                NativePlayer.getInstance().vanPlay("/sdcard/jj1.mp4", it.surface)
                 // Android 8.0 需要设置
                 setRenderer(this@VanPlayer)
             }

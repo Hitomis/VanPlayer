@@ -9,10 +9,10 @@
 
 static SLObjectItf engineObj = nullptr; // 引擎对象
 static SLEngineItf engInterface = nullptr; // 引擎接口
-static SLObjectItf mix; // 混音器
-static SLObjectItf playerObject; // 播放器对象
-static SLPlayItf playerInterface; // 播放器接口
-static SLAndroidSimpleBufferQueueItf pcmQueue; // 播放队列
+static SLObjectItf mix = nullptr; // 混音器
+static SLObjectItf playerObject = nullptr; // 播放器对象
+static SLPlayItf playerInterface = nullptr; // 播放器接口
+static SLAndroidSimpleBufferQueueItf pcmQueue = nullptr; // 播放队列
 
 /**
  * 初始化引擎,并获取接口
@@ -34,6 +34,8 @@ static void pcmCallback(SLAndroidSimpleBufferQueueItf bufferQueueItf, void *cont
 }
 
 bool VanAudioPlay::startPlay(XParameter outPar) {
+    close();
+    mux.lock();
     SLresult re;
     // 1.创建引擎
     createSL();
@@ -41,6 +43,7 @@ bool VanAudioPlay::startPlay(XParameter outPar) {
         XLOGE("Create engine success");
     } else {
         XLOGE("Create engine failed");
+        mux.unlock();
         return false;
     }
 
@@ -50,9 +53,15 @@ bool VanAudioPlay::startPlay(XParameter outPar) {
         XLOGE("Create output mix success");
     } else {
         XLOGE("Create output mix failed");
+        mux.unlock();
         return false;
     }
-    (*mix)->Realize(mix, SL_BOOLEAN_FALSE);
+    re = (*mix)->Realize(mix, SL_BOOLEAN_FALSE);
+    if (re != SL_RESULT_SUCCESS) {
+        mux.unlock();
+        XLOGE("(*mix)->Realize failed!");
+        return false;
+    }
     SLDataLocator_OutputMix outputMix = {SL_DATALOCATOR_OUTPUTMIX, mix};
     SLDataSink audioSnk = {&outputMix, nullptr};
 
@@ -84,12 +93,17 @@ bool VanAudioPlay::startPlay(XParameter outPar) {
         XLOGE("Create player success");
     } else {
         XLOGE("Create player failed");
+        mux.unlock();
         return false;
     }
     (*playerObject)->Realize(playerObject, SL_BOOLEAN_FALSE);
     // 获取 player 的接口
-    (*playerObject)->GetInterface(playerObject, SL_IID_PLAY, &playerInterface);
-
+    re = (*playerObject)->GetInterface(playerObject, SL_IID_PLAY, &playerInterface);
+    if (re != SL_RESULT_SUCCESS) {
+        mux.unlock();
+        XLOGE("GetInterface SL_IID_PLAY failed!");
+        return false;
+    }
 
     // 5.开始播放
     //注册回调缓冲区，获取缓冲队列接口
@@ -98,12 +112,15 @@ bool VanAudioPlay::startPlay(XParameter outPar) {
         XLOGE("Get queue interface success");
     } else {
         XLOGE("Get queue interface failed");
+        mux.unlock();
         return false;
     }
     // 设置回调函数，回调函数会在每一次缓冲队列读完之后调用
     (*pcmQueue)->RegisterCallback(pcmQueue, pcmCallback, this);
     (*playerInterface)->SetPlayState(playerInterface, SL_PLAYSTATE_PLAYING);
     (*pcmQueue)->Enqueue(pcmQueue, "", 1);
+    isExit = false;
+    mux.unlock();
     XLOGE("VanAudioPlay start success");
     return true;
 }
@@ -135,4 +152,36 @@ VanAudioPlay::VanAudioPlay() {
 VanAudioPlay::~VanAudioPlay() {
     delete buffer;
     buffer = nullptr;
+}
+
+void VanAudioPlay::close() {
+    IAudioPlay::clear();
+    mux.lock();
+    // 停止播放
+    if (playerInterface && (*playerInterface)) {
+        (*playerInterface)->SetPlayState(playerInterface, SL_PLAYSTATE_STOPPED);
+    }
+    // 清理播放队列
+    if (pcmQueue && (*pcmQueue)) {
+        (*pcmQueue)->Clear(pcmQueue);
+    }
+    // 销毁 player 对象
+    if (playerObject && (*playerObject)) {
+        (*playerObject)->Destroy(playerObject);
+    }
+    // 销毁混音器
+    if (mix && (*mix)) {
+        (*mix)->Destroy(mix);
+    }
+    // 销毁播放引擎
+    if (engineObj && (*engineObj)) {
+        (*engineObj)->Destroy(engineObj);
+    }
+    engineObj = nullptr;
+    engInterface = nullptr;
+    mix = nullptr;
+    playerObject = nullptr;
+    playerInterface = nullptr;
+    pcmQueue = nullptr;
+    mux.unlock();
 }

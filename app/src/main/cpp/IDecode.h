@@ -17,6 +17,10 @@ public:
     // 打开解码器
     virtual bool open(XParameter param, bool isHard = false) = 0;
 
+    virtual void close() = 0;
+
+    virtual void clear();
+
     // 发送数据到线程解码
     virtual bool sendPacket(XData &packet) = 0;
 

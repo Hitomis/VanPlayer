@@ -8,6 +8,7 @@
 
 #include "IVideoView.h"
 #include "XTexture.h"
+#include <mutex>
 
 class VanVideoView : public IVideoView {
 public:
@@ -15,9 +16,12 @@ public:
 
     void render(XData &data) override;
 
+    void close() override;
+
 protected:
     void *view = 0;
     XTexture *texture = 0;
+    std::mutex mux;
 };
 
 

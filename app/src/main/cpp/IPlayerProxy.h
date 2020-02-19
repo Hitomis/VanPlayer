@@ -17,6 +17,8 @@ public:
 
     virtual bool open(const char *path, bool isHard = false);
 
+    virtual void close();
+
     virtual bool start();
 
     virtual void initWindow(void *win);

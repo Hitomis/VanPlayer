@@ -15,6 +15,7 @@ void VanDecode::registerHard(void *vm) {
 }
 
 bool VanDecode::open(XParameter param, bool isHard) {
+    close();
     if (!param.codecParams) return false;
     AVCodecParameters *codecParams = param.codecParams;
     // 1. 查找解码器
@@ -29,6 +30,7 @@ bool VanDecode::open(XParameter param, bool isHard) {
         return false;
     }
     XLOGE("avcodec_find_decoder success %d", isHard);
+    mux.lock();
     // 2 创建上下文，复制参数
     this->codecCxt = avcodec_alloc_context3(codec);
     avcodec_parameters_to_context(this->codecCxt, codecParams);
@@ -37,30 +39,40 @@ bool VanDecode::open(XParameter param, bool isHard) {
     int re = avcodec_open2(this->codecCxt, codec, nullptr);
     if (re != 0) {
         XLOGE("avcodec_open2 failed");
+        mux.unlock();
         return false;
     }
     this->isAudio = codecCxt->codec_type == AVMEDIA_TYPE_AUDIO;
+    mux.unlock();
     return true;
 }
 
 bool VanDecode::sendPacket(XData &packet) {
     if (packet.size <= 0 || !packet.data)return false;
+    mux.lock();
     if (!codecCxt) {
+        mux.unlock();
         return false;
     }
     int re = avcodec_send_packet(codecCxt, (AVPacket *) packet.data);
+    mux.unlock();
     return re == 0;
 
 }
 
 XData VanDecode::receiveFrame() {
+    mux.lock();
     XData data;
-    if (!codecCxt) return data;
+    if (!codecCxt) {
+        mux.unlock();
+        return data;
+    }
     if (!frame) {
         frame = av_frame_alloc();
     }
     int re = avcodec_receive_frame(codecCxt, frame);
     if (re != 0) {
+        mux.unlock();
         return data;
     }
 
@@ -75,7 +87,23 @@ XData VanDecode::receiveFrame() {
     }
     data.format = frame->format;
     data.pts = frame->pts;
+    pts = data.pts;
     memcpy(data.datas, frame->data, sizeof(data.datas));
+    mux.unlock();
     return data;
+}
+
+void VanDecode::close() {
+    IDecode::clear();
+    mux.lock();
+    pts = 0;
+    if (frame) {
+        av_frame_free(&frame);
+    }
+    if (codecCxt) {
+        avcodec_close(codecCxt);
+        avcodec_free_context(&codecCxt);
+    }
+    mux.unlock();
 }
 
