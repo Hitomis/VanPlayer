@@ -16,6 +16,7 @@
 #include "VanVideoView.h"
 #include "VanResample.h"
 #include "VanAudioPlay.h"
+#include "IPlayerProxy.h"
 
 extern "C" {
 #include <libavutil/log.h>
@@ -624,43 +625,16 @@ Java_com_vansz_vanplayer_NativePlayer_video(JNIEnv *env, jobject thiz, jstring u
 extern "C" JNIEXPORT void JNICALL
 Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring url,
                                               jobject surface) {
-
-    auto *nativeWin = ANativeWindow_fromSurface(env, surface);
-    auto *videoView = new VanVideoView();
-    videoView->setRender(nativeWin);
-
     const char *urlStr = env->GetStringUTFChars(url, 0);
-    auto *demux = new VanDemux();
-    demux->open(urlStr);
+    auto *nativeWin = ANativeWindow_fromSurface(env, surface);
 
-    // 打开视频解码器解码视频数据
-    auto *vDecode = new VanDecode();
-    vDecode->open(demux->getVideoPar(), true);
-
-    // 打开音频解码器解码音频数据
-    auto *aDecode = new VanDecode();
-    aDecode->open(demux->getAudioPar());
-
-    auto *resample = new VanResample();
-    resample->open(demux->getAudioPar(), demux->getAudioPar());
-
-    auto *audioPlay = new VanAudioPlay();
-    resample->addObserver(audioPlay);
-    audioPlay->startPlay(demux->getAudioPar());
-
-    demux->addObserver(vDecode);
-    demux->addObserver(aDecode);
-    vDecode->addObserver(videoView);
-    aDecode->addObserver(resample);
-
-    demux->start();
-    vDecode->start();
-    aDecode->start();
-
+    IPlayerProxy::getInstance().initWindow(nativeWin);
+    IPlayerProxy::getInstance().open(urlStr, false);
+    IPlayerProxy::getInstance().start();
 }
 
 extern "C" JNIEXPORT
 jint JNI_OnLoad(JavaVM *vm, void *res) {
-    VanDecode::registerHard(vm);
+    IPlayerProxy::getInstance().init(vm);
     return JNI_VERSION_1_4;
 }

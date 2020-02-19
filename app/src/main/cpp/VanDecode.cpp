@@ -53,7 +53,7 @@ bool VanDecode::sendPacket(XData &packet) {
 
 }
 
-XData &VanDecode::receiveFrame() {
+XData VanDecode::receiveFrame() {
     XData data;
     if (!codecCxt) return data;
     if (!frame) {

@@ -17,13 +17,13 @@ public:
     virtual bool open(const char *url) = 0;
 
     // 获取视频参数
-    virtual XParameter &getVideoPar() = 0;
+    virtual XParameter getVideoPar() = 0;
 
     // 获取音频参数
-    virtual XParameter &getAudioPar() = 0;
+    virtual XParameter getAudioPar() = 0;
 
     //读取一帧数据，数据由调用者清理
-    virtual XData &read() = 0;
+    virtual XData read() = 0;
 
     //总时长（毫秒）
     int totalMs = 0;

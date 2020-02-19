@@ -32,7 +32,7 @@ bool VanResample::open(XParameter inPar, XParameter outPar) {
     return true;
 }
 
-XData &VanResample::resample(XData &data) {
+XData VanResample::resample(XData &data) {
 //    XLOGE("resample data size is %d", data.size);
     XData outData;
     if (!actx || data.size <= 0 || !data.data) return outData;

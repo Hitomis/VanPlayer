@@ -13,7 +13,7 @@ class VanResample : public IResample {
 public:
     bool open(XParameter inPar, XParameter outPar = XParameter()) override;
 
-    XData &resample(XData &data) override;
+    XData resample(XData &data) override;
 
     SwrContext *actx;
 };

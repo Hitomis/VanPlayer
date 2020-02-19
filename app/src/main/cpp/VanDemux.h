@@ -13,11 +13,11 @@ class VanDemux : public IDemux {
 public:
     bool open(const char *url) override;
 
-    XData &read() override;
+    XData read() override;
 
-    XParameter &getVideoPar() override;
+    XParameter getVideoPar() override;
 
-    XParameter &getAudioPar() override;
+    XParameter getAudioPar() override;
 
     VanDemux();
 

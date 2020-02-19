@@ -9,7 +9,7 @@ void XSleep(int timeMillis);
 
 class XThread {
 public:
-    virtual void start();
+    virtual bool start();
 
     virtual bool isPause();
 

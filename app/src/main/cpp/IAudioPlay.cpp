@@ -25,7 +25,7 @@ void IAudioPlay::update(XData &data) {
 }
 
 // 消费者
-XData &IAudioPlay::getFrame() {
+XData IAudioPlay::getFrame() {
     XData data;
     isRunning = true;
     while (!isExit) {

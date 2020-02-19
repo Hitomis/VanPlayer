@@ -42,6 +42,10 @@ add_library(
         src/main/cpp/VanResample.cpp
         src/main/cpp/IAudioPlay.cpp
         src/main/cpp/VanAudioPlay.cpp
+        src/main/cpp/IPlayerBuilder.cpp
+        src/main/cpp/VanPlayerBuilder.cpp
+        src/main/cpp/IPlayer.cpp
+        src/main/cpp/IPlayerProxy.cpp
         src/main/cpp/native-lib.cpp)
 
 find_library(log-lib log)

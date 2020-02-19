@@ -29,7 +29,7 @@ bool VanDemux::open(const char *url) {
     return true;
 }
 
-XParameter &VanDemux::getVideoPar() {
+XParameter VanDemux::getVideoPar() {
     XParameter parameter;
     if (!this->fmtCtx) return parameter;
     // 获取视频流索引
@@ -44,7 +44,7 @@ XParameter &VanDemux::getVideoPar() {
     return parameter;
 }
 
-XParameter &VanDemux::getAudioPar() {
+XParameter VanDemux::getAudioPar() {
     XParameter parameter;
     if (!this->fmtCtx) return parameter;
     // 获取音频流索引
@@ -61,7 +61,7 @@ XParameter &VanDemux::getAudioPar() {
 }
 
 
-XData &VanDemux::read() {
+XData VanDemux::read() {
     XData data;
     if (!fmtCtx) return data;
     AVPacket *pkt = av_packet_alloc();

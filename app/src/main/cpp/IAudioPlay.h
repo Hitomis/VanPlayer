@@ -15,7 +15,7 @@ public:
     // 缓冲满后阻塞
     virtual void update(XData &data);
 
-    virtual XData &getFrame();
+    virtual XData getFrame();
 
     virtual bool startPlay(XParameter outPar) = 0;
 
