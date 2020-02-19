@@ -629,7 +629,7 @@ Java_com_vansz_vanplayer_NativePlayer_vanPlay(JNIEnv *env, jobject thiz, jstring
     auto *nativeWin = ANativeWindow_fromSurface(env, surface);
 
     IPlayerProxy::getInstance().initWindow(nativeWin);
-    IPlayerProxy::getInstance().open(urlStr, false);
+    IPlayerProxy::getInstance().open(urlStr, true);
     IPlayerProxy::getInstance().start();
 }
 

@@ -28,6 +28,16 @@ void IDecode::update(XData &data) {
 void IDecode::run() {
     while (!isExit) {
         packsMutex.lock();
+
+        //判断音视频同步, 让视频往音频的节奏靠
+        if (!isAudio && synPts > 0) {
+            if (synPts < pts) { // 音频的时间小于视频的时间，就让视频停下来等
+                packsMutex.unlock();
+                XSleep(1);
+                continue;
+            }
+        }
+
         if (packs.empty()) {
             packsMutex.unlock();
             XSleep(1);
@@ -43,7 +53,7 @@ void IDecode::run() {
                 // frame 数据每次调用空间会被重用，所以不需要清理
                 XData frame = this->receiveFrame();
                 if (!frame.data) break;
-//                XLOGE("receiveFrame %d", frame.size);
+                pts = frame.pts;
                 // 接受的帧数据继续下发
                 this->notify(frame);
             }

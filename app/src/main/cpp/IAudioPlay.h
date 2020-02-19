@@ -21,6 +21,7 @@ public:
 
     // 最大的队列数量
     int maxSize = 100;
+    int pts = 0;
 
 protected:
     std::list<XData> frames;

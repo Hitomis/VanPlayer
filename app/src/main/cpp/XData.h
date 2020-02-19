@@ -13,6 +13,7 @@ enum XDataType {
 struct XData {
     unsigned char *data = nullptr; // 音视频帧数据
     unsigned char *datas[8] = {0}; // 存放解码后的数据， 8 == AV_NUM_DATA_POINTERS
+    int pts;
     int type = 0;
     int size = 0; // 音视频的一帧数据大小
     int width = 0; // 视频帧宽度

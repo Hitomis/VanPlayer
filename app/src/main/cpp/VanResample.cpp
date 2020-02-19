@@ -53,6 +53,6 @@ XData VanResample::resample(XData &data) {
         outData.drop();
         return outData;
     }
-//    XLOGE("swr_convert success = %d", len);
+    outData.pts = data.pts;
     return outData;
 }

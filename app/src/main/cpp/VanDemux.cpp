@@ -10,6 +10,10 @@ extern "C" {
 #include "include/libavcodec/avcodec.h"
 }
 
+static double r2d(AVRational r) {
+    return r.den == 0 || r.num == 0 ? 0 : (double) r.num / r.den;
+}
+
 bool VanDemux::open(const char *url) {
     int re = avformat_open_input(&fmtCtx, url, nullptr, nullptr);
     if (re != 0) {
@@ -81,6 +85,11 @@ XData VanDemux::read() {
         av_packet_free(&pkt);
         return data;
     }
+
+    // 转换 pts
+    pkt->pts = pkt->pts * 1000 * r2d(fmtCtx->streams[pkt->stream_index]->time_base);
+    pkt->dts = pkt->dts * 1000 * r2d(fmtCtx->streams[pkt->stream_index]->time_base);
+    data.pts = pkt->pts;
     return data;
 }
 

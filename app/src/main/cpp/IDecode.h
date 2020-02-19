@@ -32,6 +32,11 @@ public:
     // 最大的队列数量
     int maxSize = 100;
 
+    // 同步时间（其实是音频的pts），再次打开文件要清理
+    int synPts = 0;
+
+    int pts = 0;
+
 protected:
     void run() override;
 

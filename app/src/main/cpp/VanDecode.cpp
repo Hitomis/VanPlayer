@@ -74,7 +74,7 @@ XData VanDecode::receiveFrame() {
         data.size = av_get_bytes_per_sample((AVSampleFormat) frame->format) * frame->nb_samples * 2;
     }
     data.format = frame->format;
-//    if (!isAudio) XLOGE("Data format is %d", data.format);
+    data.pts = frame->pts;
     memcpy(data.datas, frame->data, sizeof(data.datas));
     return data;
 }

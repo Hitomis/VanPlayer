@@ -43,6 +43,7 @@ public:
 protected:
     IPlayer() {};
 
+    // 用作音视频同步
     void run() override;
 
     std::mutex mux;

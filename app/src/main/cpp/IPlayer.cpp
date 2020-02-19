@@ -24,11 +24,9 @@ bool IPlayer::open(const char *path) {
     }
     outPar = demux->getAudioPar();
     if (!audioDecode || !audioDecode->open(demux->getAudioPar())) {
-        mux.unlock();
         XLOGE("VanPlayer::AudioDecode open failed");
     }
     if (!videoDecode || !videoDecode->open(demux->getVideoPar(), isHardDecode)) {
-        mux.unlock();
         XLOGE("VanPlayer::videoDecode open failed");
     }
 
@@ -55,8 +53,24 @@ bool IPlayer::start() {
     return true;
 }
 
-
 void IPlayer::run() {
+    while (!isExit) {
+        mux.lock();
+
+        if (!audioPlay || !videoDecode) {
+            mux.unlock();
+            XSleep(2);
+            continue;
+        }
+
+        //同步
+        //获取音频的 pts 告诉视频
+        int apts = audioPlay->pts;
+        videoDecode->synPts = apts;
+
+        mux.unlock();
+        XSleep(2);
+    }
     XThread::run();
 }
 
