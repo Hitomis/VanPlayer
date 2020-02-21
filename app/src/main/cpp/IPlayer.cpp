@@ -77,6 +77,7 @@ void IPlayer::run() {
 
 void IPlayer::initWindow(void *win) {
     if (videoView) {
+        videoView->close();
         videoView->setRender(win);
     }
 }

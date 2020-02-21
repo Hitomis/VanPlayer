@@ -1,4 +1,4 @@
-package com.vansz.vanplayer;
+package com.vansz.vanplayer.player;
 
 /**
  * Created by Vans Z on 2020-02-10.
@@ -19,11 +19,10 @@ public class NativePlayer {
         return SingletonHolder.instance;
     }
 
-    public native void vanPlay(String url, Object surface);
+    public native void initPlayer(Object surface);
 
-    public native void play(String url, Object surface);
+    public native void play(String url);
 
-    public native void audio(String url);
 
-    public native void video(String url, Object surface);
+
 }
