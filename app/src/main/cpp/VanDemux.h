@@ -22,10 +22,9 @@ public:
 
     XParameter getAudioPar() override;
 
-    VanDemux();
+    bool seek(double progress) override;
 
-    // 多媒体文件总时长（毫秒）
-    int totalMs = 0;
+    VanDemux();
 
 private:
     AVFormatContext *fmtCtx = 0;

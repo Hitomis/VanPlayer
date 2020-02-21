@@ -23,6 +23,10 @@ public class NativePlayer {
 
     public native void play(String url);
 
+    public native double getPlayPosition();
+
+    public native void seek(double progress);
+
 
 
 }

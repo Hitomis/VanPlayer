@@ -27,6 +27,8 @@ public:
     //读取一帧数据，数据由调用者清理
     virtual XData read() = 0;
 
+    virtual bool seek(double progress) = 0;
+
     //总时长（毫秒）
     int totalMs = 0;
 

@@ -55,6 +55,7 @@
         app:layout_constraintLeft_toRightOf="@id/ic_play" />
 
     <SeekBar
+        android:id="@+id/seek_video"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginLeft="12dp"

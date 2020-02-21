@@ -30,7 +30,7 @@ bool VanDemux::open(const char *url) {
         mux.unlock();
         return false;
     }
-    // duration 单位是微秒
+    // duration 单位是微秒, 媒体文件总时长， 可能没有，如果没有就去
     this->totalMs = fmtCtx->duration / (AV_TIME_BASE / 1000);
     mux.unlock();
     getVideoPar();
@@ -133,6 +133,24 @@ void VanDemux::close() {
         avformat_close_input(&fmtCtx);
     }
     mux.unlock();
+}
+
+bool VanDemux::seek(double progress) {
+    if (progress < 0 || progress > 1) {
+        return false;
+    }
+    mux.lock();
+    if (!fmtCtx) {
+        mux.unlock();
+        return false;
+    }
+    // 清理读取的缓冲
+    avformat_flush(fmtCtx);
+    long long seekPts = fmtCtx->streams[videoStreamIndex]->duration * progress;
+    // 以向后寻找关键帧的方式跳转到 progress 位置
+    av_seek_frame(fmtCtx, videoStreamIndex, seekPts, AVSEEK_FLAG_FRAME | AVSEEK_FLAG_BACKWARD);
+    mux.unlock();
+    return true;
 }
 
 

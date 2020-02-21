@@ -54,3 +54,20 @@ void IPlayerProxy::close() {
     }
     mux.unlock();
 }
+
+double IPlayerProxy::getPlayPos() {
+    double pos = 0.0;
+    mux.lock();
+    if (player) pos = player->getPlayPos();
+    mux.unlock();
+    return pos;
+}
+
+bool IPlayerProxy::seek(double progress) {
+    bool re = false;
+    mux.lock();
+    if (player) re = player->seek(progress);
+    mux.unlock();
+    return re;
+}
+

@@ -22,9 +22,17 @@ class IAudioPlay;
 class IPlayer : public XThread {
 public:
     static IPlayer *getInstance(unsigned int index = 0);
+
     virtual bool open(const char *path);
+
     virtual void close();
+
     virtual void initWindow(void *win);
+
+    // 获取当前播放进度 [0.0, 1.0]
+    virtual double getPlayPos();
+
+    virtual bool seek(double progress);
 
     bool start() override;
 

@@ -24,3 +24,11 @@ Java_com_vansz_vanplayer_player_NativePlayer_play(JNIEnv *env, jobject thiz, jst
     IPlayerProxy::getInstance().open(urlStr, false);
     IPlayerProxy::getInstance().start();
 }
+extern "C" JNIEXPORT jdouble JNICALL
+Java_com_vansz_vanplayer_player_NativePlayer_getPlayPosition(JNIEnv *env, jobject thiz) {
+    return IPlayerProxy::getInstance().getPlayPos();
+}
+extern "C" JNIEXPORT void JNICALL
+Java_com_vansz_vanplayer_player_NativePlayer_seek(JNIEnv *env, jobject thiz, jdouble progress) {
+    IPlayerProxy::getInstance().seek(progress);
+}

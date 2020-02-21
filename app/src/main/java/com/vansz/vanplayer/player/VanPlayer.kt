@@ -47,4 +47,8 @@ class VanPlayer : GLSurfaceView, SurfaceHolder.Callback, GLSurfaceView.Renderer 
         NativePlayer.getInstance().play(url)
     }
 
+    fun getCurrentProgress(): Double = NativePlayer.getInstance().playPosition
+
+    fun seek(progress: Double) = NativePlayer.getInstance().seek(progress)
+
 }

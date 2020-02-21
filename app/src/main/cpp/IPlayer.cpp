@@ -119,3 +119,23 @@ void IPlayer::close() {
 
     mux.unlock();
 }
+
+double IPlayer::getPlayPos() {
+    double pos = 0.0;
+    mux.lock();
+    if (demux && demux->totalMs > 0 && videoDecode) {
+        pos = (double) videoDecode->pts / (double) demux->totalMs;
+    }
+    mux.unlock();
+    return pos;
+}
+
+bool IPlayer::seek(double progress) {
+    bool re = false;
+    mux.lock();
+    if (demux) {
+        re = demux->seek(progress);
+    }
+    mux.unlock();
+    return re;
+}

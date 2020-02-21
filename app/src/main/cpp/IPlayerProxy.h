@@ -21,6 +21,10 @@ public:
 
     virtual bool start();
 
+    virtual double getPlayPos();
+
+    virtual bool seek(double progress);
+
     virtual void initWindow(void *win);
 
 protected:
