@@ -7,9 +7,15 @@
 
 void IDemux::run() {
     while (!isExit) {
+        if (isPause()) {
+            XSleep(2);
+            continue;
+        }
         XData data = read();
-//        XLOGE("IDemux read %d", data.size);
-        if (data.size <= 0) break;
-        notify(data);
+        if (data.size > 0) {
+            notify(data);
+        } else {
+            XSleep(2);
+        }
     }
 }

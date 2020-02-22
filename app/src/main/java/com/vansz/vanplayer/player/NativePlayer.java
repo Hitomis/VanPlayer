@@ -27,6 +27,5 @@ public class NativePlayer {
 
     public native void seek(double progress);
 
-
-
+    public native void pause();
 }

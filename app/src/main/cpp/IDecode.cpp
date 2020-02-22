@@ -27,6 +27,10 @@ void IDecode::update(XData &data) {
 // 消费者
 void IDecode::run() {
     while (!isExit) {
+        if (isPause()) {
+            XSleep(2);
+            continue;
+        }
         packsMutex.lock();
 
         //判断音视频同步, 让视频往音频的节奏靠

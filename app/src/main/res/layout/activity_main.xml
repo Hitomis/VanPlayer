@@ -37,7 +37,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/ic_play"
+        android:id="@+id/ic_pause"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginLeft="12dp"
@@ -52,7 +52,7 @@
         android:layout_marginLeft="12dp"
         android:src="@android:drawable/ic_media_ff"
         app:layout_constraintBottom_toBottomOf="@id/iv_rew"
-        app:layout_constraintLeft_toRightOf="@id/ic_play" />
+        app:layout_constraintLeft_toRightOf="@id/ic_pause" />
 
     <SeekBar
         android:id="@+id/seek_video"

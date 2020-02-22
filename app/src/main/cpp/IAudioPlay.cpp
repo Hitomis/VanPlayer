@@ -34,7 +34,6 @@ XData IAudioPlay::getFrame() {
         }
 
         framesMutex.lock();
-
         if (!frames.empty()) {
             // 取出队列中头部的数据
             data = frames.front();

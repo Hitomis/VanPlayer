@@ -25,6 +25,10 @@ public:
 
     virtual bool seek(double progress);
 
+    virtual void pause(bool pause);
+
+    virtual bool isPause();
+
     virtual void initWindow(void *win);
 
 protected:

@@ -12,13 +12,14 @@ import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class MainActivity : BaseActivity(), View.OnClickListener {
+    private var isPause = false
 
     override fun getContentView() = R.layout.activity_main
 
     override fun init() {
         iv_open.setOnClickListener(this)
         iv_rew.setOnClickListener(this)
-        ic_play.setOnClickListener(this)
+        ic_pause.setOnClickListener(this)
         ic_ff.setOnClickListener(this)
         seek_video.max = 1000
         seek_video.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
@@ -53,7 +54,14 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                     }).request()
             }
             iv_rew -> null
-            ic_play -> null
+            ic_pause -> {
+                isPause = !isPause
+                ic_pause.setImageResource(
+                    if (isPause) android.R.drawable.ic_media_pause
+                    else android.R.drawable.ic_media_play
+                )
+                van_player.pauseOrResume()
+            }
             ic_ff -> null
         }
     }

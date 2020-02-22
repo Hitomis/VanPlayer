@@ -107,3 +107,11 @@ void VanDecode::close() {
     mux.unlock();
 }
 
+void VanDecode::clear() {
+    IDecode::clear();
+    mux.lock();
+    if (codecCxt)
+        avcodec_flush_buffers(codecCxt);
+    mux.unlock();
+}
+

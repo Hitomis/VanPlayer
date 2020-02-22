@@ -34,6 +34,8 @@ public:
 
     virtual bool seek(double progress);
 
+    virtual void pause(bool pause);
+
     bool start() override;
 
     //是否视频硬解码

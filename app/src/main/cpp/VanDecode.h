@@ -24,6 +24,8 @@ public:
     // 从线程中获取解码结果，再次调用会复用上次空间，线程不安全
     XData receiveFrame() override;
 
+    void clear() override;
+
 protected:
     AVCodecContext *codecCxt = 0;
     AVFrame *frame = 0;

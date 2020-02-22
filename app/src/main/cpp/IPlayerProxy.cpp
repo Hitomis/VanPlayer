@@ -71,3 +71,19 @@ bool IPlayerProxy::seek(double progress) {
     return re;
 }
 
+void IPlayerProxy::pause(bool pause) {
+    mux.lock();
+    if (player) {
+        player->pause(pause);
+    }
+    mux.unlock();
+}
+
+bool IPlayerProxy::isPause() {
+    bool re = false;
+    mux.lock();
+    if (player) re = player->isPause();
+    mux.unlock();
+    return re;
+}
+

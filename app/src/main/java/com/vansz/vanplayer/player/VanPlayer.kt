@@ -51,4 +51,6 @@ class VanPlayer : GLSurfaceView, SurfaceHolder.Callback, GLSurfaceView.Renderer 
 
     fun seek(progress: Double) = NativePlayer.getInstance().seek(progress)
 
+    fun pauseOrResume() = NativePlayer.getInstance().pause()
+
 }
