@@ -135,8 +135,6 @@ bool IPlayer::seek(double progress) {
     // 暂停播放
     pause(true);
 
-    mux.lock();
-
     // 清理缓冲队列
     if (videoDecode)
         videoDecode->clear(); // 清理了缓冲队列和 ffmpeg 的内部缓冲
@@ -144,6 +142,8 @@ bool IPlayer::seek(double progress) {
         audioDecode->clear();
     if (audioPlay)
         audioPlay->clear();
+
+    mux.lock();
 
     bool re = demux->seek(progress);
 

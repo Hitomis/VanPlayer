@@ -69,9 +69,8 @@ void IDecode::run() {
 }
 
 void IDecode::clear() {
-    packsMutex.lock();
-    while(!packs.empty())
-    {
+    packsMutex.try_lock();
+    while (!packs.empty()) {
         packs.front().drop();
         packs.pop_front();
     }

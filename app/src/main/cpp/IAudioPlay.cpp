@@ -11,15 +11,14 @@ void IAudioPlay::update(XData &data) {
     // 压入缓冲队列
     while (!isExit) {
         framesMutex.lock();
-
-        if (frames.size() < maxSize) {
-            frames.push_back(data);
+        if (frames.size() > maxSize) {
             framesMutex.unlock();
-            break;
+            XSleep(1);
+            continue;
         }
-
+        frames.push_back(data);
         framesMutex.unlock();
-        XSleep(1);
+        break;
     }
 }
 
@@ -52,8 +51,7 @@ XData IAudioPlay::getFrame() {
 
 void IAudioPlay::clear() {
     framesMutex.lock();
-    while(!frames.empty())
-    {
+    while (!frames.empty()) {
         frames.front().drop();
         frames.pop_front();
     }
