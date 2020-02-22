@@ -53,7 +53,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                         }
                     }).request()
             }
-            iv_rew -> null
+            iv_rew -> {
+                van_player.seek((seek_video.progress - 30.0) / seek_video.max)
+            }
             ic_pause -> {
                 isPause = !isPause
                 ic_pause.setImageResource(
@@ -62,7 +64,9 @@ class MainActivity : BaseActivity(), View.OnClickListener {
                 )
                 van_player.pauseOrResume()
             }
-            ic_ff -> null
+            ic_ff -> {
+                van_player.seek((seek_video.progress + 30.0) / seek_video.max)
+            }
         }
     }
 
